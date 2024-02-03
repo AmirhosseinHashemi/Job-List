@@ -1,5 +1,14 @@
 function App() {
-  return <div>Hello React</div>;
+  return (
+    <>
+      <Header />
+      <main className="wrapper"></main>
+    </>
+  );
+}
+
+function Header() {
+  return <header className="header"></header>;
 }
 
 export default App;

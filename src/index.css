@@ -57,3 +57,141 @@ body {
   background-color: var(--color-neutral-lightGrayishCyan-1);
   padding: 8rem 1.6rem;
 }
+
+/* Job */
+
+.job {
+  position: relative;
+
+  font-size: 1.5rem;
+
+  width: 32rem;
+  padding: 3.2rem 1.6rem 1.6rem 1.6rem;
+  border-radius: 0.5rem;
+  background-color: #fff;
+  box-shadow: 0.5rem 0.5rem 1.5rem 0 rgba(0, 0, 0, 0.125);
+}
+
+.job.featured {
+  border-left: 0.4rem solid var(--color-primary-desaturatedDarkCyan);
+}
+
+.job__logo {
+  position: absolute;
+  top: 0;
+  left: 0;
+  transform: translate(50%, -50%);
+
+  width: 5rem;
+  height: 5rem;
+}
+
+.job__title {
+  grid-column: 1 / -1;
+
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+}
+
+.job__badge {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  font-size: 1.5rem;
+  color: var(--color-neutral-lightGrayishCyan-1);
+  padding: 0.4rem 0.8rem;
+  border-radius: 1rem;
+}
+
+.job__badge--featured {
+  background-color: var(--color-neutral-veryDarkGrayishCyan);
+}
+
+.job__badge--new {
+  background-color: var(--color-primary-desaturatedDarkCyan);
+}
+
+.job__info {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  row-gap: 1.2rem;
+}
+
+.job__position,
+.job__bottom {
+  grid-column: 1 / -1;
+
+  font-weight: var(--fw-bold);
+  line-height: 1.8rem;
+  letter-spacing: -0.1rem;
+}
+
+.job__company {
+  font-size: 1.5rem;
+  color: var(--color-neutral-darkGrayishCyan);
+  margin-right: 1.6rem;
+}
+
+.job__position {
+  color: var(--color-neutral-veryDarkGrayishCyan);
+}
+
+.job__bottom {
+  display: flex;
+  align-items: center;
+  gap: 2.4rem;
+}
+
+.job__posted,
+.job__contract,
+.job__location {
+  position: relative;
+  font-weight: var(--fw-medium);
+  color: var(--color-neutral-darkGrayishCyan);
+}
+
+.job__contract::before,
+.job__location::before {
+  position: absolute;
+  content: "";
+  top: 50%;
+  left: -1.5rem;
+  transform: translateY(-50%);
+
+  width: 0.4rem;
+  height: 0.4rem;
+
+  background-color: var(--color-neutral-darkGrayishCyan);
+  border-radius: 50%;
+}
+
+.job__btns {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.8rem 1.6rem;
+}
+
+.job__btn {
+  font-weight: var(--fw-bold);
+
+  border: none;
+  border-radius: 0.2rem;
+  padding: 0.5rem;
+  color: var(--color-neutral-darkGrayishCyan);
+  background-color: var(--color-neutral-lightGrayishCyan-2);
+}
+
+.job__btn:active {
+  color: var(--color-neutral-lightGrayishCyan-1);
+  background-color: var(--color-primary-desaturatedDarkCyan);
+}
+
+.line {
+  height: 0.1rem;
+  background-color: var(--color-neutral-darkGrayishCyan);
+  opacity: 0.3;
+  margin: 1.6rem 0;
+}

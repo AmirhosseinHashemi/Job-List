@@ -72,6 +72,9 @@ function JobList({ jobs }) {
 }
 
 function Job({ jobData }) {
+  const { role, level, languages, tools } = jobData;
+  const jobLabels = [role, level, ...languages, ...tools];
+
   return (
     <li className={jobData.featured ? "job featured" : "job"}>
       <article className="job__content">
@@ -100,12 +103,20 @@ function Job({ jobData }) {
         <div className="line"></div>
 
         <div className="job__btns">
-          <button className="job__btn" type="button">
-            Frontend
-          </button>
+          {jobLabels.map((label) => (
+            <Label key={label}>{label}</Label>
+          ))}
         </div>
       </article>
     </li>
+  );
+}
+
+function Label({ children }) {
+  return (
+    <button className="job__btn" type="button">
+      {children}
+    </button>
   );
 }
 

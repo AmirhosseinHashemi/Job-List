@@ -4,6 +4,11 @@ import JobList from "./Job";
 
 function App() {
   const [jobsList, setJobsList] = useState([]);
+  const [filteredLabels, setFilteredLabels] = useState([]);
+
+  function handleFilteredLabels(newLabel) {
+    setFilteredLabels((listOfLabel) => [...listOfLabel, newLabel]);
+  }
 
   useEffect(function () {
     async function fetchJobs() {
@@ -18,9 +23,13 @@ function App() {
 
   return (
     <>
-      <Header />
+      <Header filteredLabels={filteredLabels} />
       <main className="wrapper">
-        <JobList jobs={jobsList} />
+        <JobList
+          filteredLabels={filteredLabels}
+          onFilteredLabels={handleFilteredLabels}
+          jobs={jobsList}
+        />
       </main>
     </>
   );

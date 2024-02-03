@@ -1,16 +1,18 @@
-function Header() {
+function Header({ filteredLabels }) {
   return (
     <header className="header">
-      <FilteredBox />
+      {filteredLabels.length !== 0 && <FilteredBox labels={filteredLabels} />}
     </header>
   );
 }
 
-function FilteredBox() {
+function FilteredBox({ labels }) {
   return (
-    <div className="filter" aria-label="filterd badges">
+    <div className="filter visible" aria-label="filterd badges">
       <div className="filter__container">
-        <SelectedLabel>unknown</SelectedLabel>
+        {labels.map((label, i) => (
+          <SelectedLabel key={i}>{label}</SelectedLabel>
+        ))}
       </div>
 
       <button className="filter__clear" type="button">

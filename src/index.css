@@ -286,3 +286,83 @@ ul {
 .filter__text {
   margin: 0 0.8rem;
 }
+
+/* Responsive for 1440px */
+
+@media only screen and (min-width: 1440px) {
+  .header {
+    width: 144rem;
+    background-image: url(../public/images/bg-header-desktop.svg);
+  }
+
+  .wrapper {
+    width: 144rem;
+  }
+
+  .line {
+    display: none;
+  }
+
+  .job {
+    font-size: 1.8rem;
+
+    min-width: 120rem;
+    padding: 3.2rem 3.2rem 3.2rem 12rem;
+  }
+
+  .job__content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .job__info {
+    flex-basis: 25%;
+  }
+
+  .job__btns {
+    flex-basis: 40%;
+  }
+
+  .job__btns {
+    justify-content: flex-end;
+  }
+
+  .job__company {
+    font-size: 1.8rem;
+  }
+
+  .job__logo {
+    top: 50%;
+    transform: translate(25%, -50%);
+    width: 8rem;
+    height: 8rem;
+  }
+
+  .job__btn {
+    cursor: pointer;
+  }
+
+  .job__btn:hover {
+    color: var(--color-neutral-lightGrayishCyan-1);
+    background-color: var(--color-primary-desaturatedDarkCyan);
+  }
+
+  .job__position:hover {
+    cursor: pointer;
+    color: var(--color-primary-desaturatedDarkCyan);
+  }
+
+  .filter {
+    min-width: 120rem;
+    padding: 3.2rem;
+  }
+
+  .filter__clear:hover {
+    border-bottom: 0.1rem solid var(--color-primary-desaturatedDarkCyan);
+  }
+
+  .filter__delete:hover {
+    background-color: var(--color-neutral-veryDarkGrayishCyan);
+  }
+}

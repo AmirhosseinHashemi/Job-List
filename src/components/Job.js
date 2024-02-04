@@ -1,25 +1,24 @@
 function JobList({ jobs, onFilteredLabels, filteredLabels }) {
+  const newJobList = jobs
+    .map((job) => {
+      const { role, level, languages, tools } = job;
+      job.labels = [role, level, ...languages, ...tools];
+      return job;
+    })
+    .filter((job) =>
+      filteredLabels.every((label) => job.labels.includes(label))
+    );
+
   return (
     <ul>
-      {jobs.map((job) => (
-        <Job
-          onFilteredLabels={onFilteredLabels}
-          filteredLabels={filteredLabels}
-          jobData={job}
-          key={job.id}
-        />
+      {newJobList.map((job) => (
+        <Job onFilteredLabels={onFilteredLabels} jobData={job} key={job.id} />
       ))}
     </ul>
   );
 }
 
-function Job({ jobData, onFilteredLabels, filteredLabels }) {
-  const { role, level, languages, tools } = jobData;
-  const jobLabels = [role, level, ...languages, ...tools];
-  let isFiltered = filteredLabels.every((label) => jobLabels.includes(label));
-
-  if (!isFiltered) return null;
-
+function Job({ jobData, onFilteredLabels }) {
   return (
     <li className={jobData.featured ? "job featured" : "job"}>
       <article className="job__content">
@@ -48,7 +47,7 @@ function Job({ jobData, onFilteredLabels, filteredLabels }) {
         <div className="line"></div>
 
         <div className="job__btns">
-          {jobLabels.map((label) => (
+          {jobData.labels.map((label) => (
             <Label onFilteredLabels={onFilteredLabels} key={label}>
               {label}
             </Label>

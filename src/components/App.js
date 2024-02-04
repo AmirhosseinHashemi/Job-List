@@ -7,7 +7,9 @@ function App() {
   const [filteredLabels, setFilteredLabels] = useState([]);
 
   function handleFilteredLabels(newLabel) {
-    setFilteredLabels((listOfLabel) => [...listOfLabel, newLabel]);
+    setFilteredLabels((listOfLabel) => [
+      ...new Set([...listOfLabel, newLabel]),
+    ]);
   }
 
   function handleDeleteFilteredLabel(label) {

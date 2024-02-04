@@ -10,6 +10,11 @@ function App() {
     setFilteredLabels((listOfLabel) => [...listOfLabel, newLabel]);
   }
 
+  function handleDeleteFilteredLabel(label) {
+    if (label.toLowerCase() === "clear") setFilteredLabels([]);
+    else setFilteredLabels(filteredLabels.filter((item) => item !== label));
+  }
+
   useEffect(function () {
     async function fetchJobs() {
       const res = await fetch("./data.json");
@@ -23,7 +28,10 @@ function App() {
 
   return (
     <>
-      <Header filteredLabels={filteredLabels} />
+      <Header
+        filteredLabels={filteredLabels}
+        onDeleteFilteredLabel={handleDeleteFilteredLabel}
+      />
       <main className="wrapper">
         <JobList
           filteredLabels={filteredLabels}

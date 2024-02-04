@@ -1,32 +1,47 @@
-function Header({ filteredLabels }) {
+function Header({ filteredLabels, onDeleteFilteredLabel }) {
   return (
     <header className="header">
-      {filteredLabels.length !== 0 && <FilteredBox labels={filteredLabels} />}
+      {filteredLabels.length !== 0 && (
+        <FilteredBox
+          labels={filteredLabels}
+          onDeleteFilteredLabel={onDeleteFilteredLabel}
+        />
+      )}
     </header>
   );
 }
 
-function FilteredBox({ labels }) {
+function FilteredBox({ labels, onDeleteFilteredLabel }) {
   return (
     <div className="filter visible" aria-label="filterd badges">
       <div className="filter__container">
         {labels.map((label, i) => (
-          <SelectedLabel key={i}>{label}</SelectedLabel>
+          <SelectedLabel onDeleteFilteredLabel={onDeleteFilteredLabel} key={i}>
+            {label}
+          </SelectedLabel>
         ))}
       </div>
 
-      <button className="filter__clear" type="button">
+      <button
+        onClick={(e) => onDeleteFilteredLabel(e.target.innerText)}
+        className="filter__clear"
+        type="button"
+      >
         Clear
       </button>
     </div>
   );
 }
 
-function SelectedLabel({ children }) {
+function SelectedLabel({ children, onDeleteFilteredLabel }) {
   return (
     <div className="filter__selected">
       <span className="filter__text">{children}</span>
-      <button type="button" className="filter__delete">
+      <button
+        onClick={() => onDeleteFilteredLabel(children)}
+        type="button"
+        className="filter__delete"
+      >
         <svg
           className="filter__icon"
           xmlns="http://www.w3.org/2000/svg"
